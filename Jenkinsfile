@@ -1,20 +1,18 @@
 pipeline {
     agent any
-
     stages {
-
-        stage('git clone') {
+        
+        stage("git clone") {
             steps {
-                git url: 'https://github.com/Manoj-0809/spring-petclinic.git'
+                git url: 'https://github.com/Manoj-0809/spring-petclinic.git',
                     branch: "main"
             }
         }
 
-        stage('maven version') {
+        stage("mvn package") {
             steps {
-                sh '''mvn --version'''
+                sh 'mvn package'
             }
         }
-
     }
 }
